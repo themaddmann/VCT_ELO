@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 from adjustText import adjust_text
 
-def plot_ratings_vs_wins():
+def plot_ratings_vs_wins(event):
   with open('data/teams.json', encoding='utf-8') as file:
     teams = json.load(file)
 
@@ -31,4 +31,4 @@ def plot_ratings_vs_wins():
   plt.xlabel('games played')
   plt.ylabel('rating')
   adjust_text(texts, arrowprops=dict(arrowstyle='-', color='k', lw=0.5), min_arrow_len=10)
-  plt.show()
+  plt.savefig("data/post-"+event+"-ratings.pdf", format="pdf", bbox_inches="tight")
