@@ -49,6 +49,12 @@ def update_match_results(event):
 
         if winner_rating > loser_rating:
           acc['correct'] += 1
+          print("CORRECT: " + winner + ' ('+str(winner_rating)+')' + ' vs. ' + loser + ' ('+str(loser_rating)+')')
+        elif winner_rating == loser_rating:
+          acc['correct'] += 0.5
+          print("PUSH: " + winner + ' ('+str(winner_rating)+')' + ' vs. ' + loser + ' ('+str(loser_rating)+')')
+        else:
+          print("INCORRECT: " + winner + ' ('+str(winner_rating)+')' + ' vs. ' + loser + ' ('+str(loser_rating)+')')
         acc['total'] += 1
 
         R1 = winner_rating
@@ -57,11 +63,13 @@ def update_match_results(event):
         Q2 = math.pow(10, (R2/400))
         E1 = Q1/(Q1+Q2)
         E2 = Q2/(Q1+Q2)
-        print(winner + ' ('+str(winner_rating)+')' + ' vs. ' + loser + ' ('+str(loser_rating)+')')
-        print(E1)
-        print(E2)
 
-        k = 40
+        if ('league') in event:
+          k = 20
+        elif ('last') in event:
+          k = 30
+        else:
+          k = 40
         R1 = R1 + k*(1-E1)
         R2 = R2 + k*(0-E2)
         teams[winner]['rating'] = int(R1)

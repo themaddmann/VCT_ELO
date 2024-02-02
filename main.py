@@ -1,3 +1,4 @@
+from utilities.dataviz import plot_ratings_vs_wins
 from utilities.matchscript import create_matches_file, update_match_results
 
 if __name__ == '__main__':
@@ -21,3 +22,5 @@ if __name__ == '__main__':
   update_match_results("vct-emea-last-chance-qualifier-2023")
   update_match_results("vct-pacific-last-chance-qualifier-2023")
   update_match_results("valorant-champions-2023")
+
+  plot_ratings_vs_wins()
