@@ -3,7 +3,7 @@ from utilities.matchscript import create_matches_file, update_match_results
 
 if __name__ == '__main__':
 
-  generate_gif = False
+  generate_gif = True
   #create_matches_file("vct-lockin-sao-paulo-2023")
   update_match_results("vct-lockin-sao-paulo-2023", generate_gif)
   #create_event_gif("vct-lockin-sao-paulo-2023")
