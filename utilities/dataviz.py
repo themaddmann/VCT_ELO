@@ -5,6 +5,13 @@ import imageio
 from adjustText import adjust_text
 import numpy as np
 
+def plot_preseason():
+  event = "Pre-Kickoff 2024"
+  game = "0"
+  with open('data/teams.json', encoding='utf-8') as encoded_teams:
+    teams = json.load(encoded_teams)
+  plot_ratings(event, game, teams)
+
 def plot_ratings(event, game, teams):
   names = []
   ratings = []
@@ -31,7 +38,10 @@ def plot_ratings(event, game, teams):
   plt.xlabel('League')
   plt.ylabel('Rating')
   adjust_text(texts, arrowprops=dict(arrowstyle='-', color='k', lw=0.5), min_arrow_len=25)
-  plt.savefig("data/"+event+"/ratings-"+game+".png", format="png", bbox_inches="tight")
+  data_path = "data/"+event
+  if not os.path.exists(data_path):
+    os.makedirs(data_path)
+  plt.savefig(data_path+"/ratings-"+game+".png", format="png", bbox_inches="tight")
   plt.close()
 
 def create_event_gif(event):
