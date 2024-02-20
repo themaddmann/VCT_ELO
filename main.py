@@ -6,7 +6,7 @@ if __name__ == '__main__':
   generate_gif = True
   #create_matches_file("vct-lockin-sao-paulo-2023")
   update_match_results("vct-lockin-sao-paulo-2023", generate_gif)
-  create_event_gif("vct-lockin-sao-paulo-2023")
+  #create_event_gif("vct-lockin-sao-paulo-2023")
   
   #create_matches_file("vct-americas-league-2023")
   update_match_results("vct-americas-league-2023", generate_gif)
@@ -39,5 +39,5 @@ if __name__ == '__main__':
   update_match_results("valorant-champions-2023", generate_gif)
   create_event_gif("valorant-champions-2023")
 
-  #plot_preseason()
+  plot_preseason()
   

@@ -81,7 +81,6 @@ def update_match_results(event, generate_gif):
       if winner in teams:
         winner_rating = teams[winner]['rating']
         loser_rating = teams[loser]['rating']
-        print(winner + ' ('+str(winner_rating)+')' + ' vs. ' + loser + ' ('+str(loser_rating)+') by ' + margin + ' rounds')
 
         R1 = winner_rating
         R2 = loser_rating
@@ -90,14 +89,12 @@ def update_match_results(event, generate_gif):
         E1 = Q1/(Q1+Q2)
         E2 = Q2/(Q1+Q2)
 
-        if 'china' in event:
-          k = 16
-        elif 'regular' in row['stage']:
-          k = 32
-        elif 'lockin' in event:
-          k = 16
-        else:
+        if 'regular' in row['stage']:
           k = 24
+        elif 'lockin' in event:
+          k = 8
+        else:
+          k = 16
         if int(margin) == 2:
           k *= 0.5
         elif int(margin) > 2 and int(margin) <= 5:
@@ -106,6 +103,8 @@ def update_match_results(event, generate_gif):
           k *= 1.5
         else:
           k *= 2
+        if 'china' in event:
+          k = 8
 
         R1 = R1 + k*(1-E1)
         R2 = R2 + k*(0-E2)
@@ -116,6 +115,7 @@ def update_match_results(event, generate_gif):
         if(generate_gif):
           plot_ratings(event, str(i), teams)
         i += 1
+        print(winner + ' ('+str(winner_rating)+' -> '+str(teams[winner]['rating'])+')' + ' vs. ' + loser + ' ('+str(loser_rating)+' -> '+str(teams[loser]['rating'])+') by ' + margin + ' rounds')
       else:
         print("Skipping show match: " + winner + " vs. " + loser)
 
