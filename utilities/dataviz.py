@@ -57,4 +57,4 @@ def create_event_gif(event):
   for _ in range(10):
     images.append(imageio.imread(file_path))
   gif_path = "data/" + event + ".gif"
-  imageio.mimsave(gif_path, images, fps=2, loop=0)
+  imageio.mimsave(gif_path, images, fps=1, loop=0)
