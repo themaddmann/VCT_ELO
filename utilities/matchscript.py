@@ -24,8 +24,8 @@ def get_map_score(match, file, stage):
     team1_scores.append(score.find('span', class_='score-1'))
     team2_scores.append(score.find('span', class_='score-2'))
 
-  team1_scores.pop(0)
-  team2_scores.pop(0)
+  #team1_scores.pop(0)
+  #team2_scores.pop(0)
 
   with open(file, 'a', encoding='utf-8', newline='') as csvfile:
     fieldnames = ['loser', 'winner', 'margin', 'stage']
@@ -78,6 +78,14 @@ def update_match_results(event, generate_gif):
       winner = row['winner']
       loser = row['loser']
       margin = row['margin']
+      if winner == 'Giants Gaming':
+        winner = 'GIANTX'
+      if loser == 'Giants Gaming':
+        loser = 'GIANTX'
+      if winner == 'Titan Esports Club':
+        winner = 'TEC Esports'
+      if loser == 'Titan Esports Club':
+        loser = 'TEC Esports'
       if winner in teams:
         winner_rating = teams[winner]['rating']
         loser_rating = teams[loser]['rating']
@@ -90,21 +98,19 @@ def update_match_results(event, generate_gif):
         E2 = Q2/(Q1+Q2)
 
         if 'regular' in row['stage']:
-          k = 24
+          k = 32
         elif 'lockin' in event:
-          k = 8
-        else:
           k = 16
+        else:
+          k = 24
         if int(margin) == 2:
-          k *= 0.5
+          k *= 0.25
         elif int(margin) > 2 and int(margin) <= 5:
-          k *= 1
+          k *= 0.5
         elif int(margin) > 5 and int(margin) <= 9:
-          k *= 1.5
+          k *= 1
         else:
           k *= 2
-        if 'china' in event:
-          k = 8
 
         R1 = R1 + k*(1-E1)
         R2 = R2 + k*(0-E2)
@@ -119,6 +125,8 @@ def update_match_results(event, generate_gif):
       else:
         print("Skipping show match: " + winner + " vs. " + loser)
 
+  
+  plot_ratings(event, "end", teams)
   with open('data/teams.json', 'w') as outfile:
     json.dump(teams, outfile, indent=2)
 

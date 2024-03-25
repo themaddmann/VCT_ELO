@@ -3,41 +3,22 @@ from utilities.matchscript import create_matches_file, get_map_score, update_mat
 
 if __name__ == '__main__':
 
-  generate_gif = True
-  #create_matches_file("vct-lockin-sao-paulo-2023")
+  generate_gif = False
+  #create_matches_file("valorant-champions-tour-2024-masters-madrid")
   update_match_results("vct-lockin-sao-paulo-2023", generate_gif)
-  #create_event_gif("vct-lockin-sao-paulo-2023")
-  
-  #create_matches_file("vct-americas-league-2023")
   update_match_results("vct-americas-league-2023", generate_gif)
-  create_event_gif("vct-americas-league-2023")
-  #create_matches_file("vct-emea-league-2023")
   update_match_results("vct-emea-league-2023", generate_gif)
-  create_event_gif("vct-emea-league-2023")
-  #create_matches_file("vct-pacific-league-2023")
   update_match_results("vct-pacific-league-2023", generate_gif)
-  create_event_gif("vct-pacific-league-2023")
-  
-  #create_matches_file("vct-masters-tokyo-2023")
   update_match_results("vct-masters-tokyo-2023", generate_gif)
-  create_event_gif("vct-masters-tokyo-2023")
-  
-  #create_matches_file("vct-americas-last-chance-qualifier-2023")
   update_match_results("vct-americas-last-chance-qualifier-2023", generate_gif)
-  create_event_gif("vct-americas-last-chance-qualifier-2023")
-  #create_matches_file("vct-emea-last-chance-qualifier-2023")
   update_match_results("vct-emea-last-chance-qualifier-2023", generate_gif)
-  create_event_gif("vct-emea-last-chance-qualifier-2023")
-  #create_matches_file("vct-pacific-last-chance-qualifier-2023")
   update_match_results("vct-pacific-last-chance-qualifier-2023", generate_gif)
-  create_event_gif("vct-pacific-last-chance-qualifier-2023")
-  #create_matches_file("vct-china-qualifier-2023")
-  update_match_results("vct-china-qualifier-2023", generate_gif)
-  create_event_gif("vct-china-qualifier-2023")
-  
-  #create_matches_file("valorant-champions-2023")
   update_match_results("valorant-champions-2023", generate_gif)
-  create_event_gif("valorant-champions-2023")
+  update_match_results("valorant-champions-tour-2024-americas-kickoff", generate_gif)
+  update_match_results("valorant-champions-tour-2024-emea-kickoff", generate_gif)
+  update_match_results("valorant-champions-tour-2024-pacific-kickoff", generate_gif)
+  update_match_results("valorant-champions-tour-2024-china-kickoff", generate_gif)
+  update_match_results("valorant-champions-tour-2024-masters-madrid", generate_gif)
+  #create_event_gif("valorant-champions-tour-2024-masters-madrid")
 
-  plot_preseason()
-  
+  #plot_preseason()
