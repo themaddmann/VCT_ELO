@@ -99,7 +99,7 @@ def update_match_results(event, generate_gif):
 
         if 'regular' in row['stage']:
           k = 32
-        elif 'lockin' in event:
+        elif 'lockin' in event or 'kickoff' in event:
           k = 16
         else:
           k = 24
