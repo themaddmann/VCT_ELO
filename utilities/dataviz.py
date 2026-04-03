@@ -6,7 +6,7 @@ from adjustText import adjust_text
 import numpy as np
 
 def plot_preseason():
-  event = "vct-2024-masters-madrid"
+  event = ""
   game = "start"
   with open('data/teams.json', encoding='utf-8') as encoded_teams:
     teams = json.load(encoded_teams)
@@ -19,7 +19,7 @@ def plot_ratings(event, game, teams):
   color = ''
   plt.figure(figsize=(20,10))
   for team in teams:
-    if int(teams[team]["wins"]) + int(teams[team]["losses"]) > 1:
+    if int(teams[team]["wins"]) + int(teams[team]["losses"]) > 2:
       names.append(team)
       ratings.append(teams[team]['rating'])
       leagues.append(teams[team]['league'])
@@ -34,6 +34,8 @@ def plot_ratings(event, game, teams):
       plt.scatter(teams[team]["league"], teams[team]['rating'], color=color)
   
   texts = [plt.text(leagues[i], ratings[i], names[i] + ' ('+str(ratings[i])+')', size=7, ha='left', va='center') for i in range(len(names))]
+
+  plt.title(event+'-'+game)
   plt.xlabel('League')
   plt.ylabel('Rating')
   adjust_text(texts, arrowprops=dict(arrowstyle='-', color='k', lw=0.5), min_arrow_len=25)
